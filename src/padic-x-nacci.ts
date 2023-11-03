@@ -126,8 +126,6 @@ export function* modularEnneanacci(modulo: number): Generator<number> {
     }
 }
 
-// P-ADIC WORLD
-
 export const pAdicValuation = (baseNumber: number, prime: number): number => {
     let index = 0;
     if (baseNumber < 1) return index;
