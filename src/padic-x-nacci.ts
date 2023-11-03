@@ -1,3 +1,5 @@
+import { pAdicValuation, pAdicNorm, pAdicExpansionMusic } from "./padic-music-expansions";
+
 export function* fibonacci(): Generator<number> {
     let [a, b] = [0, 1];
     while (true) {
@@ -126,13 +128,6 @@ export function* modularEnneanacci(modulo: number): Generator<number> {
     }
 }
 
-export const pAdicValuation = (baseNumber: number, prime: number): number => {
-    let index = 0;
-    if (baseNumber < 1) return index;
-    while (baseNumber % (prime ** index) === 0) index++;
-    return index - 1;
-}
-
 export function* padicFibonacci(primeNumber: number): Generator<number> {
     let [a, b] = [0, 1];
     while (true) {
@@ -199,13 +194,6 @@ export function* padicEnneanacci(primeNumber: number): Generator<number> {
     }
 }
 
-export const pAdicNorm = (baseNumber: number, primeNumber: number): number => {
-    if (baseNumber === 0) return 0;
-    const power = pAdicValuation(baseNumber, primeNumber);
-    const absoluteValue = 1 / (primeNumber ** power);
-    return absoluteValue;
-}
-
 export function* normPadicFibonacci(primeNumber: number): Generator<number> {
     let [a, b] = [0, 1];
     while (true) {
@@ -268,6 +256,72 @@ export function* normPadicEnneanacci(primeNumber: number): Generator<number> {
     let [a, b, c, d, e, f, g, h, i] = initial;
     while (true) {
         yield pAdicNorm(h, primeNumber);
+        [a, b, c, d, e, f, g, h, i] = [i, a, b, c, d, e, f, g, a + b + c + d + e + f + g + h + i];
+    }
+}
+
+export function* pAdicExpansionFibonacci(primeNumber: number, precision: number = 11): Generator<number[]> {
+    let [a, b] = [0, 1];
+    while (true) {
+        yield pAdicExpansionMusic(a, primeNumber, precision);
+        [a, b] = [b, a + b];
+    }
+}
+
+export function* pAdicExpansionTribonacci(primeNumber: number, precision: number = 11): Generator<number[]> {
+    let [a, b, c] = [0, 0, 1];
+    while (true) {
+        yield pAdicExpansionMusic(b, primeNumber, precision);
+        [a, b, c] = [c, a, a + b + c];
+    }
+}
+
+export function* pAdicExpansionTetranacci(primeNumber: number, precision: number = 11): Generator<number[]> {
+    let [a, b, c, d] = [0, 0, 0, 1];
+    while (true) {
+        yield pAdicExpansionMusic(c, primeNumber, precision);
+        [a, b, c, d] = [d, a, b, a + b + c + d];
+    }
+}
+
+export function* pAdicExpansionPentanacci(primeNumber: number, precision: number = 11): Generator<number[]> {
+    let [a, b, c, d, e] = [0, 0, 0, 0, 1];
+    while (true) {
+        yield pAdicExpansionMusic(d, primeNumber, precision);
+        [a, b, c, d, e] = [e, a, b, c, a + b + c + d + e];
+    }
+}
+
+export function* pAdicExpansionHexanacci(primeNumber: number, precision: number = 11): Generator<number[]> {
+    let [a, b, c, d, e, f] = [0, 0, 0, 0, 0, 1];
+    while (true) {
+        yield pAdicExpansionMusic(e, primeNumber, precision);
+        [a, b, c, d, e, f] = [f, a, b, c, d, a + b + c + d + e + f];
+    }
+}
+
+export function* pAdicExpansionHeptanacci(primeNumber: number, precision: number = 11): Generator<number[]> {
+    let [a, b, c, d, e, f, g] = [0, 0, 0, 0, 0, 0, 1];
+    while (true) {
+        yield pAdicExpansionMusic(f, primeNumber, precision);
+        [a, b, c, d, e, f, g] = [g, a, b, c, d, e, a + b + c + d + e + f + g];
+    }
+}
+
+export function* pAdicExpansionOctanacci(primeNumber: number, precision: number = 11): Generator<number[]> {
+    let [a, b, c, d, e, f, g, h] = [0, 0, 0, 0, 0, 0, 0, 1];
+    while (true) {
+        yield pAdicExpansionMusic(g, primeNumber, precision);
+        [a, b, c, d, e, f, g, h] = [h, a, b, c, d, e, f, a + b + c + d + e + f + g + h];
+    }
+}
+
+export function* pAdicExpansionEnneanacci(primeNumber: number, precision: number = 11): Generator<number[]> {
+    const initial: number[] = Array(9).fill(0);
+    initial[9 - 1] = 1;
+    let [a, b, c, d, e, f, g, h, i] = initial;
+    while (true) {
+        yield pAdicExpansionMusic(h, primeNumber, precision);
         [a, b, c, d, e, f, g, h, i] = [i, a, b, c, d, e, f, g, a + b + c + d + e + f + g + h + i];
     }
 }
