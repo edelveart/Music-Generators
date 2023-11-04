@@ -37,6 +37,17 @@ In that sense, we begin this repository with Fibonacci numbers, generalizations 
 - [x] `normPadicOctanacci(primeNumber: number)`
 - [x] `normPadicEnneanacci(primeNumber: number)`
 
+#### 3. P-adic Expansion
+
+- [x] `pAdicExpansionFibonacci(primeNumber: number)`
+- [x] `pAdicExpansionTribonacci(primeNumber: number)`
+- [x] `pAdicExpansionTetranacci(primeNumber: number)`
+- [x] `pAdicExpansionPentanacci(primeNumber: number)`
+- [x] `pAdicExpansionHexanacci(primeNumber: number)`
+- [x] `pAdicExpansionHeptanacci(primeNumber: number)`
+- [x] `pAdicExpansionOctanacci(primeNumber: number)`
+- [x] `pAdicExpansionEnneanacci(primeNumber: number)`
+
 ### ` Modular world`
 
 - [x] `modularFibonacci(modulo: number)`
