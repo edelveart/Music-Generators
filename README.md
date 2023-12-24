@@ -71,3 +71,7 @@ In that sense, we begin this repository with Fibonacci numbers, generalizations 
 - [x] Heptanacci
 - [x] Octanacci
 - [x] Enneanacci
+
+## Mordell Curves `y^2 = x^3 + n`
+
+I implement Mordell curves for musical purposes (Ziffers - Topos).
